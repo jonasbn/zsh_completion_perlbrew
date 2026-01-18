@@ -55,7 +55,13 @@ The implementation is pretty basic and there are possibly a lot of room for impr
 - Some interesting candidates for future improvements:
   - `install-multiple` command completion.
   - `clone-modules` command completion.
-  
+
+## See Also
+
+- [perlbrew](https://perlbrew.pl/)
+- [Bash completion script for perlbrew](https://github.com/jonasbn/bash_completion_perlbrew)
+- [Zsh Completion System](http://zsh.sourceforge.net/Doc/Release/Completion-System.html)
+
 ## License
 
 This is made available under the MIT license, see separate license file.
