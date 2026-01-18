@@ -1,0 +1,70 @@
+#compdef perlbrew
+# Zsh completion for perlbrew
+# Repository:
+#
+
+_perlbrew() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  _arguments -C \
+    '1: :->command' \
+    '*::arg:->args'
+
+  case $state in
+    command)
+      local -a subcommands
+      subcommands=(
+        'init:Initialize perlbrew environment'
+        'info:Show useful information about the perlbrew installation'
+        'install:Install perl'
+        'uninstall:Uninstall the given installation'
+        'available:List perls available to install'
+        'lib:Manage local::lib directories'
+        'alias:Give perl installations a new name'
+        'upgrade-perl:Upgrade the current perl'
+        'list:List perl installations'
+        'use:Use the specified perl in current shell'
+        'off:Turn off perlbrew in current shell'
+        'switch:Permanently use the specified perl as default'
+        'switch-off:Permanently turn off perlbrew (revert to system perl)'
+        'exec:Execute programs with specified perl environments'
+        'list-modules:List installed CPAN modules for the current Perl version in use'
+        'clone-modules:Re-installs all CPAN modules from one installation to another'
+        'self-install:Install perlbrew itself under PERLBREW_ROOT/bin'
+        'self-upgrade:Upgrade perlbrew itself'
+        'install-patchperl:Install patchperl'
+        'install-cpanm:Install cpanm, a friendly companion'
+        'install-cpm:Install cpm, a faster but still friendly companion'
+        'install-multiple:Install multiple versions and flavors of perl'
+        'download:Download the specified perl distribution tarball'
+        'clean:Purge tarballs and build directories'
+        'version:Display version'
+        'help:Read more detailed instructions'
+      )
+      _describe -V 'perlbrew' subcommands
+      ;;
+    args)
+      case $line[1] in
+        use|switch)
+          # Complete with installed perl versions (exclude currently active version)
+          local -a installed
+          installed=(${(f)"$(perlbrew list 2>/dev/null | grep -v '^\*' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"})
+          _describe -V 'installed and unused perl version' installed
+          ;;
+        uninstall)
+          # Complete with installed perl versions (exclude currently active version)
+          local -a installed
+          installed=(${(f)"$(perlbrew list 2>/dev/null | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed 's/^[[:space:]]*\*[[:space:]]*//;s/[[:space:]]*$//')"})
+          _describe -V 'installed perl version' installed
+        ;;
+        install)
+          # Complete with available perl versions
+          local -a available
+          available=(${(f)"$(perlbrew available 2>/dev/null | grep -v '\.tar.bz2' | grep -v '# perl' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"})
+          _describe -V 'available perl version' available
+          ;;
+      esac
+      ;;
+  esac
+}

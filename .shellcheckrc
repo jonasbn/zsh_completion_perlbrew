@@ -1,0 +1,2 @@
+# Disable shellcheck for this repository
+disable=all
