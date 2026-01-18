@@ -1,0 +1,30 @@
+
+# Contributing
+
+These are the guidelines for contributing to this repository.
+
+## Issues
+
+File an issue if you think you've found a bug. Please describe
+
+1. How can it be reproduced
+1. What was expected
+1. What actually occurred
+1. What version of the involved component was used
+
+## Patches
+
+Patches for fixes, features, and improvements are accepted via pull requests.
+
+Pull requests should be based on the master branch, unless you want to contribute to an active branch for a specific topic.
+
+All contributions are welcome and most will be accepted.
+
+## Use of generative AI tools
+
+When contributing code generated or assisted by AI tools, please clearly indicate which parts of the contribution were generated or assisted by such tools. This helps maintain transparency and allows for proper review of the contributed code.
+
+## Licensing and copyright
+
+Please note that accepted contributions are included in the repository and hence
+under the same license as the repository contributed to.

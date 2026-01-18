@@ -13,8 +13,8 @@ The implementation is not exhaustive, but covers the most commonly used commands
 - `perlbrew use <version>`, , (excluding currently active version)
 - `perlbrew switch <version>`, list installed versions for switching, (excluding currently active version)
 - `perlbrew install <version>`, lists available versions for installation (using `perlbrew available`)
-- `perlbrew uninstall <version>`, lists installed versions for uninstallation
-  
+- `perlbrew uninstall <version>`, lists installed versions for uninstalling (including currently active version)
+
 Add the same time it offers completion for other commands like:
 
 - `list`
@@ -23,7 +23,7 @@ Add the same time it offers completion for other commands like:
 
 ## Installation
 
-This Zsh completion scritpt is loaded by placing the `_perlbrew` file in a directory listed in your `$fpath` and then running `autoload -Uz _perlbrew`.
+This Zsh completion script is loaded by placing the `_perlbrew` file in a directory listed in your `$fpath` and then running `autoload -Uz _perlbrew`.
 
 You can also symlink the `_perlbrew` file to a directory in your `$fpath`, e.g.:
 
@@ -55,6 +55,15 @@ The implementation is pretty basic and there are possibly a lot of room for impr
 - Some interesting candidates for future improvements:
   - `install-multiple` command completion.
   - `clone-modules` command completion.
+
+## Datasheet
+
+- The completion was developed and testing tested on:
+  - macOS Tahoe 26.2
+  - Zsh 5.9 (arm64-apple-darwin25.0)
+  - App::perlbrew 0.98
+
+- Implementation has been supported by Claude Sonnet 4.5.
 
 ## See Also
 
