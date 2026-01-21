@@ -52,9 +52,27 @@ The implementation is pretty basic and there are possibly a lot of room for impr
 
 - The completion script assumes that `perlbrew` is installed and available in your `$PATH`.
 - `shellcheck` is disabled for the repository as it does not support Zsh.
+- The parser functions (`_perlbrew_parse_*`) are extracted for testability and can be tested independently.
+- A comprehensive test suite is available in the `tests/` directory - see [tests/README.md](tests/README.md).
 - Some interesting candidates for future improvements:
   - `install-multiple` command completion.
   - `clone-modules` command completion.
+
+## Testing
+
+Run the test suite to verify the completion script:
+
+```bash
+./run_tests.zsh
+```
+
+Or using Make:
+
+```bash
+make test
+```
+
+See [tests/README.md](tests/README.md) for more details about the test suite.
 
 ## Datasheet
 
