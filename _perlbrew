@@ -12,13 +12,13 @@ _perlbrew_parse_installed_unused() {
 # Parse all installed perl versions from perlbrew list output
 # Includes all versions, removes asterisk markers and whitespace
 _perlbrew_parse_installed_all() {
-  perlbrew list 2>/dev/null | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed 's/^[[:space:]]*\*[[:space:]]*//;s/[[:space:]]*$//'
+  perlbrew list 2>/dev/null | sed 's/^[[:space:]]*\*\{0,1\}[[:space:]]*//;s/[[:space:]]*$//'
 }
 
 # Parse available perl versions from perlbrew available output
 # Excludes tar.bz2 files and header comments
 _perlbrew_parse_available() {
-  perlbrew available 2>/dev/null | grep -v '\.tar.bz2' | grep -v '# perl' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'
+  perlbrew available 2>/dev/null | sed '/\.tar\.bz2/d; /# perl/d; s/^[[:space:]]*//;s/[[:space:]]*$//'
 }
 
 _perlbrew() {

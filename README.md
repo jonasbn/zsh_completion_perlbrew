@@ -74,6 +74,14 @@ make test
 
 See [tests/README.md](tests/README.md) for more details about the test suite.
 
+## Development
+
+During development, you can with success use `entr` to run tests automatically on file changes:
+
+```bash
+ls _perlbrew tests/*.zsh | entr ./run_tests.zsh
+```
+
 ## Datasheet
 
 - The completion was developed and testing tested on:
