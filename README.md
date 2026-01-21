@@ -91,6 +91,10 @@ ls _perlbrew tests/*.zsh | entr ./run_tests.zsh
 
 - Implementation has been supported by Claude Sonnet 4.5.
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.
+
 ## See Also
 
 - [perlbrew](https://perlbrew.pl/)
