@@ -3,6 +3,24 @@
 # Repository:
 #
 
+# Parse installed perl versions from perlbrew list output
+# Excludes lines starting with asterisk (current version)
+_perlbrew_parse_installed_unused() {
+  perlbrew list 2>/dev/null | grep -v '^\*' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'
+}
+
+# Parse all installed perl versions from perlbrew list output
+# Includes all versions, removes asterisk markers and whitespace
+_perlbrew_parse_installed_all() {
+  perlbrew list 2>/dev/null | sed 's/^[[:space:]]*\*\{0,1\}[[:space:]]*//;s/[[:space:]]*$//'
+}
+
+# Parse available perl versions from perlbrew available output
+# Excludes tar.bz2 files and header comments
+_perlbrew_parse_available() {
+  perlbrew available 2>/dev/null | sed '/\.tar\.bz2/d; /# perl/d; s/^[[:space:]]*//;s/[[:space:]]*$//'
+}
+
 _perlbrew() {
   local curcontext="$curcontext" state line
   typeset -A opt_args
@@ -49,19 +67,19 @@ _perlbrew() {
         use|switch)
           # Complete with installed perl versions (exclude currently active version)
           local -a installed
-          installed=(${(f)"$(perlbrew list 2>/dev/null | grep -v '^\*' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"})
+          installed=(${(f)"$(_perlbrew_parse_installed_unused)"})
           _describe -V 'installed and unused perl version' installed
           ;;
         uninstall)
           # Complete with installed perl versions (exclude currently active version)
           local -a installed
-          installed=(${(f)"$(perlbrew list 2>/dev/null | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed 's/^[[:space:]]*\*[[:space:]]*//;s/[[:space:]]*$//')"})
+          installed=(${(f)"$(_perlbrew_parse_installed_all)"})
           _describe -V 'installed perl version' installed
         ;;
         install)
           # Complete with available perl versions
           local -a available
-          available=(${(f)"$(perlbrew available 2>/dev/null | grep -v '\.tar.bz2' | grep -v '# perl' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"})
+          available=(${(f)"$(_perlbrew_parse_available)"})
           _describe -V 'available perl version' available
           ;;
       esac

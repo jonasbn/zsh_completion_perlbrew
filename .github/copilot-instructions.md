@@ -23,6 +23,13 @@ This repository contains a Zsh completion script for perlbrew.
 - Clear completion cache: `rm -f ~/.zcompdump*`
 - Verify with real perlbrew commands
 
+## Documentation
+
+- Documentation should be in Markdown format
+- Include usage examples
+- Provide installation instructions
+- The Markdown should be clear and concise and should adhere to the Markdownlint style guide and best practices and should follow the rules outlined in: `.markdownlint.json`
+
 ## Context
 
 - This is a learning/experimental project

@@ -9,3 +9,8 @@ subcommands
 reimplement
 reimplementation
 symlink
+bz
+perl
+tarballs
+mylib
+githubusercontent
