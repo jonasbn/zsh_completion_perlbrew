@@ -4,11 +4,7 @@
 
 Currently this component is in alpha stage.
 
-Unfortunately `shellcheck` does not support `zsh`, so the code not automatically checked against known anti-patterns.
-
-REF:
-
-- https://www.shellcheck.net/
+Unfortunately [`shellcheck`](https://www.shellcheck.net/) does not support `zsh`, so the code not automatically checked against known anti-patterns and potential weaknesses.
 
 | Version | Supported          |
 | ------- | ------------------ |
